@@ -2,7 +2,11 @@ import cv2
 import random
 import numpy as np
 import argparse
-
+import os
+from PyQt5.QtCore import QLibraryInfo
+os.environ["QT_QPA_PLATFORM_PLUGIN_PATH"] = QLibraryInfo.location(
+    QLibraryInfo.PluginsPath
+)
 # Initialize a global list to store points
 clicked_points = []
 
