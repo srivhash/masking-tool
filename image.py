@@ -24,21 +24,21 @@ def mouse_click_event(event, x, y, flags, param):
     if event == cv2.EVENT_LBUTTONDOWN:
         clicked_points.append((x, y))
         print(f"Point added: (x={x}, y={y})")
-        cv2.circle(image, (x, y), 1, (0, 0, 0), -1)  # Change circle color to black
+        cv2.circle(image, (x, y), 2, (0, 0, 0), -1)  # Change circle color to black
         cv2.imshow('Image', image)
 
 cv2.namedWindow('Image')
 cv2.setMouseCallback('Image', mouse_click_event)
 
 cv2.imshow('Image', image)
-cv2.waitKey(10000)  # Change to 0 to wait indefinitely until a key is pressed
+cv2.waitKey(0)  # Change to 0 to wait indefinitely until a key is pressed
 
 # Draw the final circle in black on a new white background image
 final_image = np.ones((height, width, 3), np.uint8) * 255  # White background
 # add the polygon points to the image in black
-cv2.fillPoly(final_image, [np.array(clicked_points)], (0, 0, 0),-1)
+cv2.fillPoly(final_image, [np.array(clicked_points)], (0, 0, 0))
 cv2.imshow('Mask image', final_image) # Show the final masked image
 cv2.imwrite('final_image.png', final_image)  # Save the image to the current directory
-cv2.waitKey(0)
+# cv2.waitKey(0)
 
 cv2.destroyAllWindows()
